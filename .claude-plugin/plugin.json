@@ -1,0 +1,9 @@
+{
+  "name": "my-skills",
+  "version": "0.1.0",
+  "description": "DJ's personally curated agent skills: grilling interviews, unslopped prose, adversarial review, and superpowers' TDD loop.",
+  "author": { "name": "DJ", "url": "https://github.com/drj613" },
+  "repository": "https://github.com/drj613/agent-skills",
+  "license": "MIT",
+  "keywords": ["skills", "unslop", "grilling", "tdd", "code-review"]
+}
