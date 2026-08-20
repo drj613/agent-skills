@@ -14,6 +14,10 @@ A personally curated Claude Code plugin. Skills vendored (copied, not depended o
 | `domain-modeling` | The glossary/ADR discipline grill-with-docs depends on |
 | `writing-for-agents` | How to write skills and CLAUDE.md files that get reached |
 | `loop-me` | Turn recurring loops into delegable workflow specs |
+| `diagnosing-bugs` | Loop-first debugging: build a tight red-capable repro before hypothesizing |
+| `to-spec` | Turn the current conversation into a tracker spec with test seams |
+| `to-tickets` | Break a spec into tracer-bullet tickets with blocking edges |
+| `implement` | Execute a spec or tickets with TDD, then interrogate |
 
 **From [cursor/plugins → pstack](https://github.com/cursor/plugins/tree/main/pstack):**
 
@@ -28,6 +32,7 @@ A personally curated Claude Code plugin. Skills vendored (copied, not depended o
 | `how` | Explorer/explainer/critic subsystem walkthroughs |
 | `reflect` | Review the live transcript, route lessons into skill edits |
 | `blast-radius` | Find what a diff could break beyond the diff; prove safety by running code |
+| `swarm` | Fan out N parallel workers, drain them, return one report |
 | `principle-*` (5) | Always-on rules: encode lessons in structure, prove it works, fix root causes, guard the context window, laziness protocol |
 
 Plus the `Comment Sicko` agent (`agents/comment-sicko.md`), spawned by no-comments.
@@ -37,6 +42,7 @@ Plus the `Comment Sicko` agent (`agents/comment-sicko.md`), spawned by no-commen
 | Skill | Job |
 |---|---|
 | `test-driven-development` | Red-green-refactor with the testing-anti-patterns reference |
+| `receiving-code-review` | Rigor over performative agreement when handling review feedback |
 
 ## Harness portability
 

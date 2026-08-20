@@ -30,6 +30,12 @@ Harness: <name>
 ## Arena cross-judge pool
 - <model slugs>
 
+## Issue tracker
+<tracker (GitHub Issues, beads, local markdown, ...), commands, and label vocabulary>
+
+## Swarm workers
+- <fast, cheap model slug for fan-out workers>
+
 ## Transcript location
 <glob for the current session's transcript files>
 
