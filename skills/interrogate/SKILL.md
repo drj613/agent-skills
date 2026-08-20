@@ -33,17 +33,10 @@ Write one clear paragraph. Reviewers challenge whether the work achieves the int
 
 ## Step 3, Spawn Reviewers
 
-Launch all reviewers in a single message using the Task tool, one per row of the table below. If the Codex CLI is installed (`which codex`), run Reviewer D through it (`codex exec`) for a genuinely independent second model; otherwise drop to three reviewers.
-
-| Subagent | Default model |
-|----------|---------------|
-| Reviewer A | `fable` |
-| Reviewer B | `opus` |
-| Reviewer C | `sonnet` |
-| Reviewer D | Codex CLI (optional) |
+Launch all reviewers in a single message using the harness's subagent tool. Use the `## Interrogate reviewers` list from `.agent-harness.md` at the repo root when present, one reviewer per entry, extending or shrinking the Reviewer A/B/C/D labels to the configured entry count. If the file is missing, fall back to three reviewers on the strongest distinct models the harness offers plus one second-vendor CLI reviewer if one is on PATH (e.g. `codex exec`), and suggest running `/setup-harness` once for this repo.
 
 For each reviewer:
-- `subagent_type`: `generalPurpose`
+- `subagent_type`: the harness's general-purpose subagent type
 - `model`: the configured `interrogate reviewers` entry, or the table default with no configured line
 - `readonly`: `true`
 

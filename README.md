@@ -20,11 +20,13 @@ A personally curated Claude Code plugin. Skills vendored (copied, not depended o
 | Skill | Job |
 |---|---|
 | `unslop` | Cut AI tells from any writing; always applies |
-| `interrogate` | Multi-model adversarial review (adapted: Claude Code models + optional Codex CLI reviewer) |
+| `interrogate` | Multi-model adversarial review |
+| `architect` | Types, signatures, and module shapes before code; multi-candidate via arena |
+| `arena` | N parallel candidates, pick a base, graft the best of the losers |
 | `no-comments` | Spawn Comment Sicko, delete comments, encode claimed constraints as checks |
 | `why` | Cited design-rationale digs across git, tracker, Slack, docs |
 | `how` | Explorer/explainer/critic subsystem walkthroughs |
-| `reflect` | Review the live transcript, route lessons into skill edits (adapted: Claude Code transcript paths) |
+| `reflect` | Review the live transcript, route lessons into skill edits |
 | `blast-radius` | Find what a diff could break beyond the diff; prove safety by running code |
 | `principle-*` (5) | Always-on rules: encode lessons in structure, prove it works, fix root causes, guard the context window, laziness protocol |
 
@@ -36,11 +38,8 @@ Plus the `Comment Sicko` agent (`agents/comment-sicko.md`), spawned by no-commen
 |---|---|
 | `test-driven-development` | Red-green-refactor with the testing-anti-patterns reference |
 
-## Adaptations from upstream
+## Harness portability
 
-- `interrogate`: Cursor model IDs and `pstack-models.mdc` config replaced with Claude Code model names; Reviewer D runs through the Codex CLI when installed.
-- `reflect`: `~/.cursor` transcript/skill paths rewritten to `~/.claude` equivalents; skill-edit handoff points at `writing-for-agents` instead of Cursor's `create-skill`.
-- `no-comments`: `/architect` dependency replaced with an inline sketch step.
-- `why`: MCP discovery rewritten for Claude Code's ToolSearch.
+These skills are meant to work across harnesses (Claude Code, Cursor, Codex, ...). Everything harness-specific — model slugs, transcript paths, MCP discovery — lives in one repo-root config file, `.agent-harness.md`, written by running `/setup-harness` once per repo. Skills read that file when present and fall back to generic behavior ("strongest models the harness offers") when it's missing. Upstream's Cursor-specific model IDs, `~/.cursor` paths, and `pstack-models.mdc` references were all replaced with this mechanism; reflect's skill-edit handoff points at `writing-for-agents` instead of Cursor's `create-skill`.
 
 Upstream licenses are preserved in `licenses/`.
