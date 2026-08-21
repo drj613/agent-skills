@@ -75,6 +75,6 @@ None hard. Clone, install as a plugin, and run `/setup-harness` once per repo �
 
 ## Harness portability
 
-These skills are meant to work across harnesses (Claude Code, Cursor, Codex, ...). Everything harness-specific — model slugs, transcript paths, MCP discovery — lives in one repo-root config file, `.agent-harness.md`, written by running `/setup-harness` once per repo. Skills read that file when present and fall back to generic behavior ("strongest models the harness offers") when it's missing. Upstream's Cursor-specific model IDs, `~/.cursor` paths, and `pstack-models.mdc` references were all replaced with this mechanism; reflect's skill-edit handoff points at `writing-for-agents` instead of Cursor's `create-skill`.
+These skills are meant to work across harnesses (Claude Code, Cursor, Codex, ...). Everything harness-specific — model slugs, issue tracker, review panel, transcript and skill-directory paths, MCP discovery — lives in one repo-root config file, `.agent-harness.md`, written by running `/setup-harness` once per repo. Skills read that file when present and fall back to generic behavior ("strongest models the harness offers") when it's missing. Upstream's Cursor-specific model IDs, `~/.cursor` paths, and `pstack-models.mdc` references were all replaced with this mechanism; reflect's skill-edit handoff points at `writing-for-agents` instead of Cursor's `create-skill`.
 
 Upstream licenses are preserved in `licenses/`.

@@ -1,6 +1,6 @@
 ---
 name: setup-harness
-description: Run once per repo to write .agent-harness.md — the harness config (models, transcript paths, MCP discovery) that interrogate, arena, architect, and reflect read.
+description: Run once per repo to write .agent-harness.md — the harness config (model rosters, issue tracker, review panel, transcript and skill paths, MCP discovery) that the harness-portable skills read. Also checks prerequisites like beads idempotently.
 disable-model-invocation: true
 ---
 
