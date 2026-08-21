@@ -13,7 +13,8 @@ These skills are harness-portable (Claude Code, Cursor, Codex, anything with sub
 1. **Detect the harness.** Check the environment: which agent CLI is running, what its subagent/task tool is called, where it stores session transcripts (e.g. Claude Code: `~/.claude/projects/<project-slug>/*.jsonl`; Cursor: the workspace `agent-transcripts/` directory), and where skills are installed.
 2. **Detect available models.** List the model names/slugs the harness's subagent tool accepts. Detect second-vendor CLIs on PATH (`codex`, `gemini`, etc.) — an independent vendor makes adversarial review genuinely diverse.
 3. **Propose and confirm.** Show the user a proposed config with recommended answers: reviewer list for interrogate (3–4 entries, at least one second-vendor if available), runner list and cross-judge pool for arena/architect. Wait for confirmation.
-4. **Write `.agent-harness.md`** at the repo root using the template below. If the repo is shared, recommend adding it to `.gitignore` (or `.git/info/exclude`) so personal model choices don't land on teammates.
+4. **Check prerequisites — idempotently.** The `to-tickets`, `plan-with-team`, `wayfinder`, and `triage` skills need an issue tracker. The preferred one is beads (`br`, from [beads_rust](https://github.com/Dicklesworthstone/beads_rust)). Check `command -v br`; if missing, offer to install it (release binary into `~/.local/bin/`, or `cargo install` from the repo) — never reinstall over a working copy. If the repo should use beads and has no `.beads/` directory yet, offer `br init`. If the user prefers GitHub Issues or local markdown, record that instead; nothing else requires beads.
+5. **Write `.agent-harness.md`** at the repo root using the template below. If the repo is shared, recommend adding it to `.gitignore` (or `.git/info/exclude`) so personal model choices don't land on teammates.
 
 ## Template
 
@@ -35,6 +36,9 @@ Harness: <name>
 
 ## Swarm workers
 - <fast, cheap model slug for fan-out workers>
+
+## Review panel
+<team-review's reviewer roster: named agent definitions, or lens prompts (correctness, security, performance, framework idioms)>
 
 ## Transcript location
 <glob for the current session's transcript files>
