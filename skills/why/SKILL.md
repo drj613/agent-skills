@@ -118,7 +118,7 @@ Launch all matching investigators in a single message so they run concurrently. 
 Subagent config (each):
 - `subagent_type`: the harness's general-purpose subagent type
 - `model`: your configured why-investigators model (default: a fast, cheap model the harness offers)
-- `readonly`: `false` (agent mode). **Do not use readonly/Ask mode.** It strips MCP access, which disables MCP-backed investigators entirely. The source control investigator would be safe in readonly, but keep modes uniform. Investigators still shouldn't write anything. That's a posture, not a sandbox.
+- Set the subagent to full agent mode (not read-only). **Do not use read-only mode.** It strips MCP access, which disables MCP-backed investigators entirely. The source control investigator would be safe in read-only, but keep modes uniform. Investigators still shouldn't write anything. That's a posture, not a sandbox.
 
 Each investigator gets:
 1. The base prompt from `references/investigator-prompt.md`
@@ -164,7 +164,7 @@ Spawn one synthesizer subagent:
 
 - `subagent_type`: the harness's general-purpose subagent type
 - `model`: your configured why-synthesizer model (default: the strongest model the harness offers)
-- `readonly`: `false` (agent mode). The synthesizer's quality check spot-verifies citations, which can require MCP access. Readonly/Ask mode strips MCPs and defeats that.
+- Set the subagent to full agent mode (not read-only). The synthesizer's quality check spot-verifies citations, which can require MCP access. Read-only mode strips MCPs and defeats that.
 
 The synthesizer gets:
 1. The investigator findings, including any null results and any categories skipped with justification

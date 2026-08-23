@@ -1,6 +1,23 @@
 # agent-skills
 
-A personally curated Claude Code plugin. Skills vendored (copied, not depended on) from three MIT-licensed sources, graded against my own session history and lightly adapted. Replaces the superpowers plugin.
+A personally curated set of AI tooling — skills, agents, and Pi extensions — that I copy across machines. Mostly a Claude Code plugin, but harness-portable: model IDs, tracker paths, and tooling live in `.agent-harness.md`, so the skills run in Claude Code, Cursor, Codex, Pi, and friends. When a commit mentions Pi packages or extensions, those live in `.pi/` and are installed globally on each machine (see [Pi extensions](#pi-extensions)).
+
+## Pi extensions
+
+Two third-party Pi extensions I keep installed everywhere, plus one bundled in this repo. The one-command setup — copies `skills/` and `agents/` into Pi's global dirs, installs `background-task-runner`, and ensures the npm packages — is:
+
+```bash
+bash pi-install.sh
+```
+
+It is idempotent (safe to re-run). For other harnesses (opencode, commandcode, codex, cursor), copy `skills/` and `agents/` to that harness's skill/agent dirs, or run its `/setup-harness` flow.
+
+Manually, the pieces are:
+
+- **`@tintinweb/pi-subagents`** — Claude Code-style autonomous sub-agents for Pi: parallel background agents, live widget, custom agent types, mid-run steering, resume, worktree isolation. Install with `pi install npm:@tintinweb/pi-subagents`.
+- **`@plannotator/pi-extension`** — visual plan review with annotations: file-based plan mode, a browser approval/deny UI for plans, code/PR review, and agent-message annotation. Install with `pi install npm:@plannotator/pi-extension`.
+
+**`background-task-runner`** is a pure shell-task backgrounding extension I wrote from [ismailsaleekh/pi-background-tasks](https://github.com/ismailsaleekh/pi-background-tasks) (ISC), keeping only the background shell jobs and dropping the delegated agents, multi-model Fusion, and Anthropic attribution. Source lives in `.pi/background-task-runner/`. It exposes the `bg_run`, `bg_status`, `bg_logs`, `bg_kill` tools plus `/bg`, `/jobs`, `/logs`, `/kill`, `/bg-clear` commands, a footer status showing running/finished counts, and a completion notification on terminal state. Output lands in `.pi/tasks/`.
 
 ## Skills
 
@@ -77,4 +94,4 @@ None hard. Clone, install as a plugin, and run `/setup-harness` once per repo �
 
 These skills are meant to work across harnesses (Claude Code, Cursor, Codex, ...). Everything harness-specific — model slugs, issue tracker, review panel, transcript and skill-directory paths, MCP discovery — lives in one repo-root config file, `.agent-harness.md`, written by running `/setup-harness` once per repo. Skills read that file when present and fall back to generic behavior ("strongest models the harness offers") when it's missing. Upstream's Cursor-specific model IDs, `~/.cursor` paths, and `pstack-models.mdc` references were all replaced with this mechanism; reflect's skill-edit handoff points at `writing-for-agents` instead of Cursor's `create-skill`.
 
-Upstream licenses are preserved in `licenses/`.
+Upstream licenses are preserved in `licenses/`. The `background-task-runner` Pi extension is a trimmed port of [pi-background-tasks](https://github.com/ismailsaleekh/pi-background-tasks) (ISC); its license is preserved in `licenses/LICENSE-pi-background-tasks`.

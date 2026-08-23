@@ -1,0 +1,3 @@
+# typecheck scaffolding (symlinks to local pi install); not part of the package
+.pi/background-task-runner/node_modules/
+.pi/background-task-runner/tsconfig.json

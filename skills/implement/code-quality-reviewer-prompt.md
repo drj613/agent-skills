@@ -7,7 +7,7 @@ Use this template when dispatching a code quality reviewer subagent.
 **Only dispatch after spec compliance review passes.**
 
 ```
-Task tool (the harness's code-review or general-purpose subagent type):
+Agent tool (the harness's code-review or general-purpose subagent type):
   Review the diff BASE_SHA..HEAD_SHA against the task requirements.
   Return: Strengths, Issues (Critical/Important/Minor), Assessment.
 

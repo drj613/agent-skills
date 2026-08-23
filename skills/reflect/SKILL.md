@@ -34,7 +34,7 @@ For each candidate, read the first JSONL line and check that `message.content[0]
 
 ### 2. Spawn three reviewers in parallel
 
-One message, three `Task` calls, the harness's general-purpose subagent type, explicit `model:` on each, agent mode (`readonly: false`). Reviewers need MCP access for context lookups (tickets, chat threads, observability traces referenced in the transcript); readonly strips MCPs. The prompt forbids file writes; the parent applies edits.
+One message, three `Agent` calls, the harness's general-purpose subagent type, explicit model on each, full agent mode (not read-only). Reviewers need MCP access for context lookups (tickets, chat threads, observability traces referenced in the transcript); read-only strips MCPs. The prompt forbids file writes; the parent applies edits.
 
 | Lens | `model` | Prompt template |
 |---|---|---|
@@ -42,11 +42,11 @@ One message, three `Task` calls, the harness's general-purpose subagent type, ex
 | Tooling | your configured reflect-tooling model (default: a strong second-vendor model when available, else the strongest the harness offers) | `references/tooling-reviewer.md` |
 | Divergent | your configured reflect-judgment model (default: the strongest model the harness offers) | `references/divergent-reviewer.md` |
 
-Pass each template verbatim, substituting the transcript path or digest where marked. Reviewers return findings in the `Task` response body.
+Pass each template verbatim, substituting the transcript path or digest where marked. Reviewers return findings in the `Agent` response body.
 
 ### 3. Synthesize
 
-One `Task` call, the harness's general-purpose subagent type, using your configured reflect-judgment model (default: the strongest model the harness offers), agent mode (`readonly: false`). The synthesizer's quality check includes spot-verifying citations, which can require MCP access; readonly strips MCPs. Use `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked. The synthesizer returns a structured Accepted / Rejected / Backlog list.
+One `Agent` call, the harness's general-purpose subagent type, using your configured reflect-judgment model (default: the strongest model the harness offers), full agent mode (not read-only). The synthesizer's quality check includes spot-verifying citations, which can require MCP access; read-only strips MCPs. Use `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked. The synthesizer returns a structured Accepted / Rejected / Backlog list.
 
 ### 4. Structural enforcement check
 

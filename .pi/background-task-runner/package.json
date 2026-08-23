@@ -1,0 +1,26 @@
+{
+  "name": "background-task-runner",
+  "version": "1.0.0",
+  "description": "Portable Pi extension for durable background shell jobs: start long-running commands, poll status, read bounded logs, kill on demand, and get a completion notification when they finish. Only the shell-task backgrounding from pi-background-tasks (ISM license), vendored and simplified: no delegated agents, no multi-model Fusion, no Anthropic attribution.",
+  "type": "module",
+  "license": "ISC",
+  "author": "DJ",
+  "keywords": [
+    "pi",
+    "pi-extension",
+    "pi-package",
+    "background",
+    "tasks",
+    "bg_run",
+    "shell"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-agent-core": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "pi": {
+    "extensions": ["./background-task-runner.ts"]
+  }
+}
