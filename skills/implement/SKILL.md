@@ -23,6 +23,8 @@ Work through the spec or tickets in dependency order. TDD at the agreed seams, c
 
 Fresh subagent per task + two-stage review (spec compliance first, then code quality). Subagents get isolated, precisely curated context — they never inherit your session history, and you preserve your own context for coordination.
 
+**Execution mode:** Every implementer, spec reviewer, code-quality reviewer, and fix agent in this workflow MUST be dispatched with `run_in_background: false`. Wait for that foreground result before taking the next workflow step. Never use a background completion notification as the sequencing mechanism for this skill, and never dispatch a replacement while the original agent is running or queued.
+
 **Setup:** Read the plan or tickets once. Extract every task with its full text and enough scene-setting context. Track them in a todo list. Never make a subagent read the plan file — provide the full task text in the dispatch.
 
 **Per task:**
@@ -50,5 +52,6 @@ Fresh subagent per task + two-stage review (spec compliance first, then code qua
 - Skip either review stage, or run quality review before spec compliance passes.
 - Move to the next task while a review has open issues.
 - Dispatch multiple implementer subagents in parallel (conflicts).
+- Dispatch any implementer or reviewer in the background, or retry a task that already has an active/queued agent.
 - Fix a subagent's failed work by hand — dispatch a fix subagent with specific instructions instead (context pollution).
 - Let implementer self-review replace actual review; both are needed.
