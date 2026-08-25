@@ -47,6 +47,7 @@ Manually, the pieces are:
 | `writing-shape` | Find the shape of a piece before drafting |
 | `writing-beats` | Beat-by-beat drafting discipline |
 | `research` | AFK research tickets: resolve a fact a decision waits on |
+| `handoff` | Compact the current chat into a handoff doc for a fresh session (pairs with `recall`) |
 
 **From [cursor/plugins → pstack](https://github.com/cursor/plugins/tree/main/pstack):**
 
