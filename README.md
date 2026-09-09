@@ -86,6 +86,7 @@ Plus the `Comment Sicko` agent (`agents/comment-sicko.md`), spawned by no-commen
 | `setup-harness` | Run once per repo: writes `.agent-harness.md` (models, tracker, transcript paths) |
 | `team-review` | Parallel domain-specialist review with code-validated findings, judge dedup, and a fix/defer/dismiss loop |
 | `plan-with-team` | Blueprint-grade plans: test-first tasks, adversarial review, a tracker ticket per task |
+| `crew` | Session mode: orchestrate on the top tier, cast scout/research/build/refute/debug to tiered subagents (`agents/crew-*.md`) |
 
 ## Prerequisites
 

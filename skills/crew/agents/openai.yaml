@@ -1,0 +1,5 @@
+interface:
+  display_name: "Crew"
+  short_description: "Orchestrate tiered scout/research/build/refute/debug subagents"
+policy:
+  allow_implicit_invocation: false
