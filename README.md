@@ -12,6 +12,8 @@ bash pi-install.sh
 
 It is idempotent (safe to re-run). For other harnesses (opencode, commandcode, codex, cursor), copy `skills/` and `agents/` to that harness's skill/agent dirs, or run its `/setup-harness` flow.
 
+Agent files under `agents/` use Claude Code tool names in their `tools:` frontmatter (`Read, Grep, Glob, Bash, WebFetch, WebSearch`). `pi-install.sh` translates that line to pi's built-ins on copy (`read, grep, find, bash`; web and MCP tools dropped), since each harness rejects the other's names.
+
 Manually, the pieces are:
 
 - **`@tintinweb/pi-subagents`** — Claude Code-style autonomous sub-agents for Pi: parallel background agents, live widget, custom agent types, mid-run steering, resume, worktree isolation. Install with `pi install npm:@tintinweb/pi-subagents`.

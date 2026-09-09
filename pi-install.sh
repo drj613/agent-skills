@@ -63,11 +63,40 @@ if [[ -d "$HERE/skills" ]]; then
 fi
 
 # --- agents ---------------------------------------------------------------
+# Agent files are written with Claude Code tool names. pi-subagents wants pi's
+# built-ins (read, write, edit, bash, grep, find, ls) and fails loudly on
+# anything else, so the `tools:` frontmatter line is translated on copy:
+# Read/Write/Edit/Bash/Grep -> lowercase, Glob -> find, web and mcp__ tools
+# dropped (pi has no built-in equivalent). Names already in pi form pass through.
+translate_tools() {
+  awk '
+    /^---$/ { fm++; print; next }
+    fm==1 && /^tools:/ {
+      sub(/^tools:[[:space:]]*/, "")
+      n = split($0, parts, ",")
+      out = ""
+      for (i = 1; i <= n; i++) {
+        t = parts[i]; gsub(/^[[:space:]]+|[[:space:]]+$/, "", t)
+        if (t == "Read") t = "read"
+        else if (t == "Write") t = "write"
+        else if (t == "Edit") t = "edit"
+        else if (t == "Bash") t = "bash"
+        else if (t == "Grep") t = "grep"
+        else if (t == "Glob") t = "find"
+        else if (t == "WebFetch" || t == "WebSearch" || t ~ /^mcp__/) continue
+        out = out (out == "" ? "" : ", ") t
+      }
+      if (out != "") print "tools: " out
+      next
+    }
+    { print }
+  ' "$1"
+}
 if [[ -d "$HERE/agents" ]]; then
   n=0
   for a in "$HERE"/agents/*.md; do
     [[ -f "$a" ]] || continue
-    cp "$a" "$AGENTS_DEST/$(basename "$a")"
+    translate_tools "$a" > "$AGENTS_DEST/$(basename "$a")"
     n=$((n+1))
   done
   echo "agents: installed $n persona file(s)."
