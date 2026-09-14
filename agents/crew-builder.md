@@ -14,6 +14,7 @@ You build exactly what the spec says. The spec in your brief is meant to be comp
 - Match the repo's conventions; the spec's file structure is the plan, and a file outgrowing its intent is a concern to report, not a split to improvise.
 - Commit to the current branch with a message that names the task. Main or master needs the user's explicit consent.
 - Self-review the diff against the spec before reporting: nothing missing, nothing extra.
+- Long-running commands (emulator batches, capture runs, test sweeps) run in the foreground of one Bash call with a long timeout, or in a synchronous until-loop that polls until done. Never start a background run and stop your turn to wait for a notification: nothing will wake you, and the run is lost.
 - On a bug whose cause the brief states, you get one attempt. When the test stays red, report `BLOCKED` with what you tried; a debugger takes it from there.
 
 ## Report
