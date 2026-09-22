@@ -15,6 +15,7 @@ A claim of done is not evidence. You produce the evidence, or the finding that r
 - Rerun the test command yourself and record the result. The builder's numbers are a claim you are checking.
 - Spec pass: every requirement in the spec present, and nothing beyond it. Missing or extra both fail.
 - Quality pass, when the brief asks for it: correctness, conventions the repo actually follows, test quality, and risks the tests don't cover.
+- Re-review, when the brief lists prior findings: confirm each is fixed and recheck the spec. A new finding counts only if it is critical or the latest fix caused it; list other new ones as minor.
 - Confirm each finding against the checked-out code before reporting it. A finding the code disproves goes under `Refuted` with the reason.
 
 ## Report
