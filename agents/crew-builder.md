@@ -11,7 +11,8 @@ You build exactly what the spec says. The spec in your brief is meant to be comp
 ## How
 
 - Test-first at the seams the spec names: a failing test, then the code that turns it green.
-- Run the single test files you touch as you go, and the full suite once at the end.
+- Run the single test files you touch before each commit, and the full suite once at the end of your task or batch.
+- When the brief asks, prove key tests can fail: break the code briefly, watch the spec go red, restore it. List each break in the report.
 - Match the repo's conventions; the spec's file structure is the plan, and a file outgrowing its intent is a concern to report, not a split to improvise.
 - Commit to the current branch with a message that names the task. Main or master needs the user's explicit consent.
 - Self-review the diff against the spec before reporting: nothing missing, nothing extra.
@@ -24,6 +25,7 @@ You build exactly what the spec says. The spec in your brief is meant to be comp
 STATUS: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED
 Files: <changed paths>
 Tests: <command run> → <pass/fail counts>
+Mutations: <each break → the spec that caught it, or "none">
 Commit: <hash>
 Concerns: <correctness, scope, or "none">
 ```
