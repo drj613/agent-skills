@@ -44,12 +44,25 @@ Sibling skills named here (`implement`, `plan-with-team`, `diagnosing-bugs`) are
 **Feature or change.**
 
 1. Load the selected task record if resuming. Cast Scouts and Researchers in parallel for gaps and questionable premises needed by this task; include relevant prior findings in their briefs.
-2. Write the spec. Small work (one seam, up to about three files): the spec goes inline in the Builder brief. Larger work (more tasks, or crossing module boundaries): follow `plan-with-team`, then `implement` in subagent-driven mode with the implementer cast as Builder and both review passes (spec, then quality) cast as Refuter.
+2. Write the spec. Small work (one seam, up to about three files): the spec goes inline in the Builder brief. Larger work (more tasks, or crossing module boundaries): follow `plan-with-team`, then `implement` in subagent-driven mode with the implementer cast as Builder and both review passes (spec, then quality) cast as Refuter, at the cadence set under Ceremony.
 3. Cast one Builder. Parallel Builders only for disjoint files, each in its own worktree with its own test database, ports, and other shared state. Read the repo's worktree setup first; a worktree can inherit the parent's env, so two suites may hit one database. When worktrees can't be isolated, run Builders one at a time. Handle each status as `implement` does.
 4. Cast the Refuter after the Builder finishes. On `FAIL`, rule on each finding: accept, reject with a reason, or downgrade. Settle a disputed one against the code or with a Researcher. If no critical or important finding survives, treat it as `PASS`. Otherwise persist the accepted findings and send them back. When the fixes are local, continue the same Builder (SendMessage in Claude Code); when the approach itself failed or the Builder's context is spent, cast a fresh one with the spec, findings, and prior attempts. From round two on, the Refuter's brief lists the accepted findings it must confirm fixed. Repeat until `PASS`, with no round cap. If the same failure returns, route it to the Debugger or Researcher to resolve the cause or missing fact before another Builder attempt. Continue while an evidence-backed next step remains within scope; use the stop conditions below when progress needs user input.
 5. With parallel worktrees, cast a Builder to merge their branches, resolve conflicts, and run the full suite, then Refuter the merged result. Mark the task record `done` and report: what shipped, what the Refuter ran, what stayed open.
 
 **Bug.** Known cause: one Builder attempt, then Refuter. Unknown cause: Scout maps the code paths; Debugger runs the `diagnosing-bugs` loop and reports root cause and proposed fix; Builder applies the fix with a regression test; Refuter verifies. A Builder `BLOCKED` on a bug with no stated cause routes to the Debugger too.
+
+## Ceremony
+
+Sort each step before dispatching it. This sets the review cadence and overrides `implement`'s review after every task.
+
+| Step | Ceremony |
+|---|---|
+| **Novel**: new logic, concurrency, workflow semantics, security, data migration, or the first instance of a pattern | Its own Builder, then its own Refuter with a quality pass |
+| **Copy** of a pattern that already passed review | One Builder does the batch, one commit per step; one Refuter covers the batch |
+| **Groundwork**: small helpers, no behavior change | Builder only; set the next Refuter's base early enough to cover it |
+| **Docs, cleanup, tracker chores** | Builder only; one light Refuter read at the end of the task |
+
+When unsure, call it novel. A copy that needs new judgment, like a new state or a different guard, is novel for that part.
 
 ## Facts
 
