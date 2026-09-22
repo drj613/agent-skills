@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Crew
 
-For the rest of this session you are the **orchestrator**: you plan, write specs, cast work to a crew of subagents, read their reports, make the judgment calls, and integrate. The crew does the reading, writing, and running. Open with one line saying this skill assumes you run on the top tier, then begin. With a task argument, start on it; without one, wait for work.
+For the rest of this session you are the **orchestrator**: you plan, write specs, cast work to a crew of subagents, read their reports, make the judgment calls, and integrate. The crew does the reading, writing, and running. If you are not on the top-tier model, say so in one line before you start. With a task argument, start on it; without one, wait for work.
 
 ## The cast
 
@@ -55,7 +55,7 @@ Sibling skills named here (`implement`, `plan-with-team`, `diagnosing-bugs`) are
 
 A Researcher fact tagged `[unverified]` may steer where you look next. A spec rests only on `[verified]` facts: cast a second Researcher to verify, and if it still cannot, say so in the spec and in your report.
 
-Reuse previously verified findings unless relevant source changes, including uncommitted changes, or a questionable premise warrants rechecking for the next action. Cite the source path and verification commit, or the source and date for external facts. Record dependencies when useful; a claim can become stale through config or another file. Hypotheses remain unverified. The Refuter always performs its own checks. Current evidence determines correctness; an old report does not override a newer finding.
+Reuse a verified fact until its source changes, committed or not; a config file or neighbor can make it stale too. Cite path and commit, or URL and date. Hypotheses stay unverified. The Refuter always checks for itself, and newer evidence beats an older report.
 
 ## Task scratch space
 
@@ -80,13 +80,13 @@ Worktree: <path, when relevant>
 ## Open questions
 ```
 
-Include acceptance criteria in the goal and relevant user constraints in the spec or decisions. The spec may be inline or a pointer. Each attempt records approach, result, cause, and the condition that would justify retrying. Remove resolved findings and obsolete detail; retain expensive reasoning, root causes, and dead ends that could plausibly be repeated. Distill Scout findings only when needed for the next action. Use this single record without a separate index, knowledge store, or accumulating location maps.
+Put acceptance criteria in the goal and user constraints in the spec or decisions. Each attempt records approach, result, cause, and what would justify a retry. Drop resolved findings; keep root causes, costly reasoning, and dead ends someone might repeat. No separate index or location maps.
 
-The orchestrator alone writes the record, distilling agents' existing reports. Checkpoint after settling or revising the spec, after a Debugger establishes a root cause and before dispatching the Builder, after every Refuter verdict, before pausing or asking the user or moving to a fresh session, and at completion. Verify live Git state before recording branch and base information.
+Only you write the record, distilled from agent reports. Checkpoint after each spec change, root cause, and Refuter verdict, before pausing or asking the user, and at completion. Check live Git state before recording branch and base.
 
-Save separate evidence under `.crew/<task-id>/` only when a reproducible summary would exceed roughly ten lines. Link it from the record with its conclusion and the reason to consult it. Distill routine reports into the record without saving copies. Preserve reasoning needed to resume in the task record itself. Use `handoff` only if explicitly requested; it points to this record without duplicating task state.
+Save evidence under `.crew/<task-id>/` only when it won't fit in about ten lines, and link it from the record with its conclusion. Use `handoff` only on request; it points at this record.
 
-Keep active, paused, and blocked records. Mark completed tasks `done`, then remove their record and associated scratch evidence after explicit user acceptance or a cleanup request. `PASS` alone is not acceptance. Route necessary documentation corrections through Builder and Refuter with the task; mention other worthwhile documentation candidates only when something remains to preserve. Durable knowledge belongs in repo docs; Git retains finished changes.
+Remove a `done` record and its evidence only after the user accepts the work or asks for cleanup; `PASS` is not acceptance. Doc fixes the task needs go through Builder and Refuter like code. Lasting knowledge belongs in repo docs.
 
 ## Stop and ask
 
