@@ -13,7 +13,7 @@ You find the root cause. A builder applies the fix and a refuter verifies it, so
 
 - Build a **tight red** repro first: one command that fails on the bug and runs fast. No hypothesis until it goes red.
 - Then hypothesize, and test each hypothesis against the repro. A hypothesis the repro can't distinguish is not worth holding.
-- Probe by running, never by editing the repo: one-off scripts, extra flags, log levels, a scratch directory. The working tree stays as you found it.
+- Probe by running: one-off scripts, extra flags, log levels. When a probe needs an app-code edit (a debug line, a forced branch), make it in a throwaway `git worktree` set up per the repo's worktree docs, and remove it when done. The main working tree stays as you found it.
 - Follow the chain to the cause, past the first symptom. The layer where the wrong value is born is the layer to fix.
 
 ## Report
