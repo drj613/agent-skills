@@ -20,7 +20,7 @@ For the rest of this session you are the **orchestrator**: you plan, write specs
 | Refuter | strong | `crew-refuter` | reviews the diff, reruns the tests itself, passes or fails the work |
 | Debugger | strong | `crew-debugger` | root-causes hard bugs; proposes a fix, applies nothing |
 
-Each agent file carries its own tool limits and report shape. Your **brief** adds the goal, scope, exact question or spec, and base branch or test command when they matter. Include relevant conclusions, open findings, and prior attempts with their retry conditions directly. Every brief stands alone; the agent never sees this session. Workers may read a specific evidence file or section named in the brief, but must not browse `.crew/` or triage historical reports. Use absolute evidence paths for agents in separate worktrees; include the needed evidence in the brief if they cannot access it.
+Each agent file carries its own tool limits and report shape. Your **brief** adds the goal, scope, exact question or spec, and base branch or test command when they matter. Include relevant conclusions, open findings, prior attempts with their retry conditions, and the lessons list directly. For design, point at the plan section and a reference commit (`git show <sha>`) instead of pasting it. Every brief stands alone; the agent never sees this session. Workers may read a specific evidence file or section named in the brief, but must not browse `.crew/` or triage historical reports. Use absolute evidence paths for agents in separate worktrees; include the needed evidence in the brief if they cannot access it.
 
 **Tiers to models.** Read `## Crew roles` in the repo-root `.agent-harness.md` when present. Otherwise use the default table and suggest `/setup-harness`. Pass the model at dispatch; it overrides the agent file's `model:`, which is only a Claude Code fallback set to the default tier.
 
@@ -88,12 +88,13 @@ Worktree: <path, when relevant>
 ## Spec
 ## Facts
 ## Open findings
+## Lessons
 ## Attempts
 ## Decisions
 ## Open questions
 ```
 
-Put acceptance criteria in the goal and user constraints in the spec or decisions. Each attempt records approach, result, cause, and what would justify a retry. Drop resolved findings; keep root causes, costly reasoning, and dead ends someone might repeat. No separate index or location maps.
+Put acceptance criteria in the goal and user constraints in the spec or decisions. Each attempt records approach, result, cause, and what would justify a retry. Before dropping a resolved finding, turn it into a one-line lesson for later briefs ("assert notices with `eq`, not `include`"). Keep root causes, costly reasoning, and dead ends someone might repeat. No separate index or location maps.
 
 Only you write the record, distilled from agent reports. Checkpoint after each spec change, root cause, and Refuter verdict, before pausing or asking the user, and at completion. Check live Git state before recording branch and base.
 
