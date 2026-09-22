@@ -1,6 +1,7 @@
 ---
 name: crew-builder
 description: Crew builder. Implements one spec, tests it, commits it, and reports a status with evidence.
+model: sonnet
 ---
 
 # Crew builder

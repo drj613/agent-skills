@@ -2,6 +2,7 @@
 name: crew-scout
 description: Crew scout. Finds files, symbols, call sites, and references; reports locations, not contents.
 tools: Read, Grep, Glob
+model: haiku
 ---
 
 # Crew scout

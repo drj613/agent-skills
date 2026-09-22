@@ -68,9 +68,12 @@ fi
 # anything else, so the `tools:` frontmatter line is translated on copy:
 # Read/Write/Edit/Bash/Grep -> lowercase, Glob -> find, web and mcp__ tools
 # dropped (pi has no built-in equivalent). Names already in pi form pass through.
+# `model:` lines are Claude Code aliases, so they are dropped; the caller picks
+# the model at dispatch.
 translate_tools() {
   awk '
     /^---$/ { fm++; print; next }
+    fm==1 && /^model:/ { next }
     fm==1 && /^tools:/ {
       sub(/^tools:[[:space:]]*/, "")
       n = split($0, parts, ",")

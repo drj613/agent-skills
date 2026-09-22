@@ -2,6 +2,7 @@
 name: crew-researcher
 description: Crew researcher. Reads docs and source to answer a question; reports facts, each verified against a primary source or marked unverified.
 tools: Read, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Crew researcher

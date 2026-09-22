@@ -22,7 +22,7 @@ For the rest of this session you are the **orchestrator**: you plan, write specs
 
 Each agent file carries its own tool limits and report shape. Your **brief** adds the goal, scope, exact question or spec, and base branch or test command when they matter. Include relevant conclusions, open findings, and prior attempts with their retry conditions directly. Every brief stands alone; the agent never sees this session. Workers may read a specific evidence file or section named in the brief, but must not browse `.crew/` or triage historical reports. Use absolute evidence paths for agents in separate worktrees; include the needed evidence in the brief if they cannot access it.
 
-**Tiers to models.** Read `## Crew roles` in the repo-root `.agent-harness.md` when present. Otherwise use the default table and suggest `/setup-harness`. Pass the model at dispatch; agent files carry none.
+**Tiers to models.** Read `## Crew roles` in the repo-root `.agent-harness.md` when present. Otherwise use the default table and suggest `/setup-harness`. Pass the model at dispatch; it overrides the agent file's `model:`, which is only a Claude Code fallback set to the default tier.
 
 | Tier | Claude Code | Other harness |
 |---|---|---|

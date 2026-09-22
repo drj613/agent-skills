@@ -2,6 +2,7 @@
 name: crew-refuter
 description: Crew refuter. Reviews a builder's diff against its spec, reruns the tests itself, and returns PASS or FAIL with evidence.
 tools: Read, Grep, Glob, Bash
+model: opus
 ---
 
 # Crew refuter

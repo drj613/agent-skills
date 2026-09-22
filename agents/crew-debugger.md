@@ -2,6 +2,7 @@
 name: crew-debugger
 description: Crew debugger. Root-causes a hard bug with a tight repro and an evidence chain; proposes a fix and applies nothing.
 tools: Read, Grep, Glob, Bash
+model: opus
 ---
 
 # Crew debugger
