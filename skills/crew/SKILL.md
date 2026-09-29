@@ -29,7 +29,7 @@ Each agent file carries its own tool limits and report shape. Your **brief** add
 | fast | haiku | the cheapest model offered |
 | standard | sonnet | the mid model |
 | strong | opus | the strongest model below the orchestrator's |
-| top | fable | the session's own model |
+| top | opus | the session's own model |
 
 Agent type names may carry the prefix the harness adds to plugin agents (Claude Code: `my-skills:crew-scout`). When the harness has no custom agent types, dispatch its general-purpose subagent with the agent file's body pasted above the brief.
 
