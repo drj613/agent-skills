@@ -1,0 +1,3 @@
+interface:
+  display_name: "Recon"
+  short_description: "Survey how others build a feature, then recommend one"

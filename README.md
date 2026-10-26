@@ -81,7 +81,7 @@ Plus the `Comment Sicko` agent (`agents/comment-sicko.md`), spawned by no-commen
 | `test-driven-development` | Red-green-refactor with the testing-anti-patterns reference |
 | `receiving-code-review` | Rigor over performative agreement when handling review feedback |
 
-**Own (ideas codified from my adjentic plugin):**
+**Own (mostly ideas codified from my adjentic plugin):**
 
 | Skill | Job |
 |---|---|
@@ -89,6 +89,7 @@ Plus the `Comment Sicko` agent (`agents/comment-sicko.md`), spawned by no-commen
 | `team-review` | Parallel domain-specialist review with code-validated findings, judge dedup, and a fix/defer/dismiss loop |
 | `plan-with-team` | Blueprint-grade plans: test-first tasks, adversarial review, a tracker ticket per task |
 | `crew` | Session mode: orchestrate on the top tier, cast scout/research/build/refute/debug to tiered subagents (`agents/crew-*.md`) |
+| `recon` | Before a major feature: survey how others build it against primary sources, recommend the fit, stop for a pick |
 
 ## Prerequisites
 
